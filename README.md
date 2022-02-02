@@ -46,3 +46,9 @@ Please commit your working code at the end of this task.
 Add a new feature to your application that allows you to update the status of the current tasks and add new tasks.
 
 Please commit your working code at the end of this task.
+
+### Task 4 - Testing
+
+Use your judgement to add an appropriate amount of unit tests to your application.
+
+Please commit your working code at the end of this task.
