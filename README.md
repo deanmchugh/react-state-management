@@ -25,7 +25,7 @@ This repository contains the data and instructions required to complete the Fron
 
 Your task is to create a simple "To do" application using React.
 
-Make sure to complete each task in a separate branch and open a PR request to merge your branch to master.
+Make sure to complete each task in a separate branch and open a Pull Request to merge your branch to master.
 
 ### Task 1 - Display tasks
 
