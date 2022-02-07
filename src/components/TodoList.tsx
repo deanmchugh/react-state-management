@@ -12,7 +12,7 @@ function TodoList({ error, tasks }: Props) {
   const content = handleTodoListContent({ error, tasks })
 
   return (
-    <div>
+    <div className="task-list">
       {
         typeof content === 'string'
           ? <DefaultMessage message={content} />

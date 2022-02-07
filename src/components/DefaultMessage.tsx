@@ -4,7 +4,10 @@ type Props = {
 
 function DefaultMessage({ message }: Props) {
   return (
-    <h2>{message}</h2>
+    <div className="default-message">
+      <img src="./alert.png" alt="user notification icon" width={35} />
+      <p>{message}</p>
+    </div>
   )
 }
 

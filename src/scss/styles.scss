@@ -1,0 +1,91 @@
+* {
+    gap: 5px;
+    border-radius: 7px;
+    background-color: white;
+    padding: 0;
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+}
+
+%centered-content {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
+
+%component-wrapper {
+    padding: 5px;
+    border: 1px solid gray;
+    box-shadow: 1px 2px 2px gray;
+}
+
+.page {
+    @extend %centered-content;
+    height: 100vh;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 5px;
+    height: 99%;
+    width: 99%;
+    max-width: 500px;
+    max-height: 900px;
+}
+
+.task-list {
+    @extend %component-wrapper;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: scroll;
+    background-image: linear-gradient(to bottom right, lightblue, DodgerBlue);
+}
+
+.task-item {
+    @extend %component-wrapper;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.task-tick-text-group {
+    display: flex;
+    align-items: center;
+}
+
+.tick-box {
+    @extend %centered-content;
+    border: 1px solid gray;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.delete-button {
+    border: 0;
+}
+
+.task-input {
+    @extend %component-wrapper;
+    display: flex;
+    height: 35px;
+    background-color: DodgerBlue;
+}
+
+.input-field {
+    @extend %component-wrapper;
+    flex: 1;
+    font-size: 1.1em;
+}
+
+.submit-button {
+    @extend %component-wrapper;
+    font-size: 1.1em;
+}
+
+.default-message {
+    @extend %component-wrapper;
+    @extend %centered-content;
+    flex-direction: column;
+}
