@@ -3,23 +3,16 @@ import TickBox from './TickBox'
 
 type Props = {
     task: Task
+    updateTask: (id: string) => void
 }
 
-function TodoItem({ task }: Props) {
-  const { text, isCompleted } = task
+function TodoItem({ task, updateTask }: Props) {
+  const { id, text, isCompleted } = task
 
   return (
     <div className="task-item">
-      <div className="task-tick-text-group">
-        <TickBox isComplete={isCompleted} />
-        <p>{text}</p>
-      </div>
-      <button
-        className="delete-button"
-        type="submit"
-      >
-        <img src="./bin.png" alt="task delete button" width={30} />
-      </button>
+      <TickBox isComplete={isCompleted} updateTask={() => updateTask(id)} />
+      <p>{text}</p>
     </div>
   )
 }

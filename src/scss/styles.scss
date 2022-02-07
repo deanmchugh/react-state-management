@@ -47,12 +47,6 @@
     @extend %component-wrapper;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-}
-
-.task-tick-text-group {
-    display: flex;
-    align-items: center;
 }
 
 .tick-box {
@@ -60,10 +54,6 @@
     border: 1px solid gray;
     min-width: 30px;
     min-height: 30px;
-}
-
-.delete-button {
-    border: 0;
 }
 
 .task-input {

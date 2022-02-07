@@ -6,9 +6,10 @@ import TodoItem from './TodoItem'
 type Props = {
   error: string
   tasks: Task[]
+  updateTask: (id: string) => void
 }
 
-function TodoList({ error, tasks }: Props) {
+function TodoList({ error, tasks, updateTask }: Props) {
   const content = handleTodoListContent({ error, tasks })
 
   return (
@@ -16,7 +17,7 @@ function TodoList({ error, tasks }: Props) {
       {
         typeof content === 'string'
           ? <DefaultMessage message={content} />
-          : content.map((task) => <TodoItem key={task.id} task={task} />)
+          : content.map((task) => <TodoItem key={task.id} task={task} updateTask={updateTask} />)
       }
     </div>
   )

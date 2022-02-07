@@ -1,16 +1,21 @@
 type Props = {
   isComplete: boolean
+  updateTask: () => void
 }
 
-function TickBox({ isComplete }: Props) {
+function TickBox({ isComplete, updateTask }: Props) {
   return (
-    <div className="tick-box">
+    <button
+      onClick={() => updateTask()}
+      className="tick-box"
+      type="submit"
+    >
       {
         isComplete
           ? <img src="./tick.png" alt="complete task button" width={25} />
           : null
       }
-    </div>
+    </button>
   )
 }
 
