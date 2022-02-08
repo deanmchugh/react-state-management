@@ -2,12 +2,12 @@ import { Task } from '../@types/Task'
 
 enum USER_MESSAGES {
   FETCH_ERROR = 'Problem getting tasks',
-  PROMPT_ADD_TASK = 'Add a tasks'
+  PROMPT_ADD_TASK = 'Add a task'
 }
 
 type Props = {
-    error: string
-    tasks: Task[]
+    error?: string
+    tasks?: Task[]
 }
 
 function handleTodoListContent({ error, tasks }: Props) {
