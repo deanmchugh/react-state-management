@@ -1,10 +1,6 @@
 import { useRef } from 'react'
 
-type Props = {
-  addTask: (text: string) => void
-}
-
-function TaskInput({ addTask }: Props) {
+function TaskInput() {
   const inputRef = useRef<HTMLInputElement>()
   const text = useRef<string>()
 

@@ -1,15 +1,8 @@
-import { Task } from '../@types/Task'
 import handleTodoListContent from '../helpers/handleTodoListContent'
 import DefaultMessage from './DefaultMessage'
 import TodoItem from './TodoItem'
 
-type Props = {
-  error: string
-  tasks: Task[]
-  updateTask: (id: string) => void
-}
-
-function TodoList({ error, tasks, updateTask }: Props) {
+function TodoList() {
   const content = handleTodoListContent({ error, tasks })
 
   return (
