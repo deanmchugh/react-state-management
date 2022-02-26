@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+    background-color: white;
+    font-size: 20px;
+}
+
+%centered-content {
+    justify-content: center;
+    align-items: center; 
+}
+
+%component-wrapper {
+    margin: 1px;
+    padding: 5px;
+    border: 1px solid gray;
+    box-shadow: 1px 2px 2px gray;
+    border-radius: 5px;
+}
+
+%flex-column {
+    display: flex;
+    flex-direction: column;
+}
+
+.page-wrapper {
+    @extend %centered-content;
+    @extend %flex-column;
+    height: 100vh;
+    flex: 1;
+    gap: 5px;
+}
+
+.task-list-wrapper {
+    @extend %flex-column;
+    @extend %component-wrapper;
+    width: 96%;
+    flex: 18;
+    gap: 5px;
+    overflow: scroll;
+    max-height: 900px;
+    max-width: 600px;
+    background-image: linear-gradient(to bottom right, lightblue, DodgerBlue);
+}
+
+.default-message-wrapper {
+    @extend %flex-column;
+    @extend %centered-content;
+    @extend %component-wrapper;
+}
+
+.task-item-wrapper {
+    @extend %component-wrapper;
+    display: flex;
+    justify-content: space-between;
+    > div {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        
+    }
+    > button {
+        border: none;
+        background-color: none;
+    }
+}
+
+.tick-box-button {
+    @extend %centered-content;
+    display: flex;
+    border: 1px solid gray;
+    border-radius: 5px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+.task-input-wrapper {
+    @extend %component-wrapper;
+    display: flex;
+    width: 96%;
+    flex: 1;
+    gap: 5px;
+    max-height: 35px;
+    max-width: 600px;
+    background-color: DodgerBlue;
+    * {
+        @extend %component-wrapper;
+        border-radius: 5px;
+        padding: 4px;
+    }
+    > input {
+        display: flex;
+        flex: 1;
+    }
+}
+
+.modal-wrapper {
+    @extend %component-wrapper;
+    position: fixed;
+    z-index: 5;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    button {
+        @extend %component-wrapper;
+    }
+    > div {
+        display: flex;
+        justify-content: space-around;
+        gap: 5px;
+    }
+}

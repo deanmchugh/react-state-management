@@ -1,34 +1,33 @@
 import {
-  createContext, Dispatch, ReactChild, useEffect, useMemo, useReducer,
+  createContext, ReactChild, useMemo, useState,
 } from 'react'
-import { ContextState, STATUS } from '../../@types/TaskContext'
-import fetchJSONData from '../../helpers/fetchJSONData'
-import taskReducer, { Actions, TASK_ACTION } from '../reducers/taskReducer'
+import { Tasks } from '../../@types/Task'
 
-const initialState: ContextState = {
-  status: STATUS.LOADING,
-  tasks: [],
-}
+type State = {error: boolean, tasks: Tasks}
 
-type Action = Dispatch<Actions>
+const initalState: State = { error: false, tasks: [] }
 
-export const TasksContext = createContext<[ContextState, Action]>(null)
+type Action = (tasks: Tasks) => void
+type Context = [State, Action]
+
+export const TasksContext = createContext<Context>(null)
 
 type Props = {
-    children: ReactChild
+  children: ReactChild
 }
 
 export function TasksContextProvider({ children }: Props) {
-  const [data, dispatch] = useReducer(taskReducer, initialState)
-  const value: [ContextState, Action] = useMemo(() => [data, dispatch], [data])
+  const [context, setContext] = useState(initalState)
 
-  useEffect(() => {
-    fetchJSONData('tasks.json').then((res) => (
-      typeof res === 'string'
-        ? dispatch({ type: TASK_ACTION.ERROR })
-        : dispatch({ type: TASK_ACTION.GET, payload: res })
-    ))
-  }, [])
+  const errorHandler = (tasks: Tasks) => {
+    try {
+      setContext({ error: false, tasks })
+    } catch (e) {
+      setContext({ error: true, tasks })
+    }
+  }
+
+  const value: Context = useMemo(() => [context, errorHandler], [context])
 
   return (
     <TasksContext.Provider value={value}>

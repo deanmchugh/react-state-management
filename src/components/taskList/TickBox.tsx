@@ -7,12 +7,13 @@ function TickBox({ isComplete, updateTask }: Props) {
   return (
     <button
       onClick={() => updateTask()}
-      className="tick-box"
+      className="tick-box-button"
+      aria-label="toggle task completion button"
       type="submit"
     >
       {
         isComplete
-          ? <img src="./tick.png" alt="complete task button" width={25} />
+          ? <img src="./tick.png" alt="task complete" width={23} height={23} />
           : null
       }
     </button>

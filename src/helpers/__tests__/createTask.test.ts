@@ -1,12 +1,13 @@
 import createTask from '../createTask'
 
 describe('createTask', () => {
-  test('should create task', () => {
-    const task = createTask({ text: 'new task' })
-    expect(task.text).toBe('new task')
-    expect(task.isCompleted).toBe(false)
-    expect(task).toHaveProperty('created')
-    expect(task).toHaveProperty('modified')
+  test('to create task', () => {
+    const test = 'test'
+    const task = createTask(test)
     expect(task).toHaveProperty('id')
+    expect(task).toHaveProperty('text')
+    expect(task.text).toBe(test)
+    expect(task).toHaveProperty('isCompleted')
+    expect(task.isCompleted).toBe(false)
   })
 })
