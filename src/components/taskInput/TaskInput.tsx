@@ -1,13 +1,14 @@
 import { ChangeEvent, useRef } from 'react'
 import useTasks from '../../state/hook/useTasks'
+import { TASK_ACTION } from '../../state/reducer/taskReducer'
 
 function TaskInput() {
-  const { addTask } = useTasks()
+  const { dispatch } = useTasks()
   const inputRef = useRef<HTMLInputElement>()
   const text = useRef<string>()
 
   const handleTaskSubmit = () => {
-    addTask(text.current)
+    dispatch({ type: TASK_ACTION.CREATE, payload: text.current })
     text.current = ''
     inputRef.current.value = ''
   }
@@ -25,7 +26,7 @@ function TaskInput() {
         type="text"
       />
       <button
-        onClick={() => handleTaskSubmit()}
+        onClick={handleTaskSubmit}
         type="submit"
         aria-label="add task button"
       >

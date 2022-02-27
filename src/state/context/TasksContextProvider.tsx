@@ -1,33 +1,24 @@
 import {
-  createContext, ReactChild, useMemo, useState,
+  createContext, Dispatch, ReactChild, useMemo, useReducer,
 } from 'react'
 import { Tasks } from '../../@types/Task'
+import taskReducer, { Action } from '../reducer/taskReducer'
 
-type State = {error: boolean, tasks: Tasks}
+export type State = {error?: string, tasks: Tasks}
 
-const initalState: State = { error: false, tasks: [] }
+const initalState: State = { tasks: [] }
 
-type Action = (tasks: Tasks) => void
-type Context = [State, Action]
+export type Context = {state: State, dispatch: Dispatch<Action>}
 
-export const TasksContext = createContext<Context>(null)
+export const TasksContext = createContext<Context>(undefined)
 
 type Props = {
   children: ReactChild
 }
 
 export function TasksContextProvider({ children }: Props) {
-  const [context, setContext] = useState(initalState)
-
-  const errorHandler = (tasks: Tasks) => {
-    try {
-      setContext({ error: false, tasks })
-    } catch (e) {
-      setContext({ error: true, tasks })
-    }
-  }
-
-  const value: Context = useMemo(() => [context, errorHandler], [context])
+  const [state, dispatch] = useReducer(taskReducer, initalState)
+  const value: Context = useMemo(() => ({ state, dispatch }), [state])
 
   return (
     <TasksContext.Provider value={value}>

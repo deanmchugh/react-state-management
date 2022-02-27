@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import useTasks from '../../state/hook/useTasks'
+import { TASK_ACTION } from '../../state/reducer/taskReducer'
 
 function ClearTasksModal() {
-  const { allTasksCompleted, clearTasks } = useTasks()
+  const { allTasksCompleted, dispatch } = useTasks()
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
@@ -18,7 +19,7 @@ function ClearTasksModal() {
       <div>
         <button
           aria-label="clear all tasks"
-          onClick={() => clearTasks()}
+          onClick={() => dispatch({ type: TASK_ACTION.DELETE_ALL })}
           type="submit"
         >
           Clear All

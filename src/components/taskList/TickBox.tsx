@@ -6,7 +6,7 @@ type Props = {
 function TickBox({ isComplete, updateTask }: Props) {
   return (
     <button
-      onClick={() => updateTask()}
+      onClick={updateTask}
       className="tick-box-button"
       aria-label="toggle task completion button"
       type="submit"

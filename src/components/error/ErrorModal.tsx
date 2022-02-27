@@ -6,7 +6,7 @@ function ErrorModal() {
   const [open, setOpen] = useState(false)
 
   useEffect(() => {
-    setOpen(error)
+    setOpen(!!error)
   }, [error])
 
   return (
